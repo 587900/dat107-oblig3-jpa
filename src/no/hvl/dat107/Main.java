@@ -63,55 +63,55 @@ public class Main {
 
 		Ansatt nyAnsatt = new Ansatt("Bjørnefar", "Bjørn", "Bjørnsen", LocalDate.of(2021, 02, 25),
 				"Bjørnevasker" + 68943,98);  // Hva raden skal inneholde
-		AnsattDAO.lagreNyAnsatt(nyAnsatt);   // Lagrer den nye raden
+		ansattDAO.lagreNyAnsatt(nyAnsatt);   // Lagrer den nye raden
 		
-		Ansatt finnAns = AnsattDAO.finnAnsattMedTekst("Bjørn");
+		Ansatt finnAns = ansattDAO.finnAnsattMedTekst("Bjørn");
 		System.out.println("   Henter ut todo med pk=4");
-		System.out.println("   " + todod);
+		System.out.println("   " + ansattDAO);
 	
 		pauseOgSjekkDatabasen("\nSjekk at vi har fått en ny rad med id=4 og tekst=Gjøre lekser.");
 
 		
 		// e)
-		System.out.println("\ne) Slette todo med pk=4");
-
-		todoDAO.slettTodoMedPk(4);
-
-		Todo todoe = todoDAO.finnTodoMedPk(4);
-		System.out.println("   Henter ut todo med pk=4");
-		System.out.println("   " + todoe);
-
-		pauseOgSjekkDatabasen("\nSjekk at rad med id=4 er slettet igjen.");
+//		System.out.println("\ne) Slette todo med pk=4");
+//
+//		todoDAO.slettTodoMedPk(4);
+//
+//		Todo todoe = todoDAO.finnTodoMedPk(4);
+//		System.out.println("   Henter ut todo med pk=4");
+//		System.out.println("   " + todoe);
+//
+//		pauseOgSjekkDatabasen("\nSjekk at rad med id=4 er slettet igjen.");
 
 		
 		// f)
-		System.out.println("\nf) Endre tekst på todo med pk=3");
-
-		Todo todof1 = todoDAO.finnTodoMedPk(3);
-		todof1.setTekst("Endret tekst " + LocalTime.now());
-		todoDAO.oppdaterTodo(todof1);
-
-		Todo todof2 = todoDAO.finnTodoMedPk(3);
-		System.out.println("   Henter ut todo med pk=3");
-		System.out.println("   " + todof2);
-
-		pauseOgSjekkDatabasen("\nSjekk at rad med id=3 har fått oppdatert klokkeslett i tekst.");
+//		System.out.println("\nf) Endre tekst på todo med pk=3");
+//
+//		Todo todof1 = todoDAO.finnTodoMedPk(3);
+//		todof1.setTekst("Endret tekst " + LocalTime.now());
+//		todoDAO.oppdaterTodo(todof1);
+//
+//		Todo todof2 = todoDAO.finnTodoMedPk(3);
+//		System.out.println("   Henter ut todo med pk=3");
+//		System.out.println("   " + todof2);
+//
+//		pauseOgSjekkDatabasen("\nSjekk at rad med id=3 har fått oppdatert klokkeslett i tekst.");
 
 		
 		// g)
-		System.out.println("\ng) Endre tekst på todo med pk=3, alternativ måte");
-
-		todoDAO.oppdaterTekst(3, "Jobbe med DAT107-oblig");
-
-		Todo todog = todoDAO.finnTodoMedPk(3);
-		System.out.println("   Henter ut todo med pk=3");
-		System.out.println("   " + todog);
-
-		pauseOgSjekkDatabasen("\nSjekk at rad med id=3 har fått oppdatert tekst til 'Jobbe med DAT107-oblig'.");
-
-		System.out.println("\nProgrammet er ferdig! :)");
+//		System.out.println("\ng) Endre tekst på todo med pk=3, alternativ måte");
+//
+//		todoDAO.oppdaterTekst(3, "Jobbe med DAT107-oblig");
+//
+//		Todo todog = todoDAO.finnTodoMedPk(3);
+//		System.out.println("   Henter ut todo med pk=3");
+//		System.out.println("   " + todog);
+//
+//		pauseOgSjekkDatabasen("\nSjekk at rad med id=3 har fått oppdatert tekst til 'Jobbe med DAT107-oblig'.");
+//
+//		System.out.println("\nProgrammet er ferdig! :)");
 	}
-
+//
 	private static void pauseOgSjekkDatabasen(String prompt) {
 		System.out.println(prompt);
 		System.out.println("Trykk \"ENTER\" for å fortsette ...");

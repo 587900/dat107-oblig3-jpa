@@ -5,7 +5,7 @@
     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
     version="2.2">
 	
-	<persistence-unit name="FirmaPU" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="firmaPU" transaction-type="RESOURCE_LOCAL">
 		
 		<!--  Java-programmet som utfører spørringer listes her -->
 		<class>no.hvl.dat107.Main</class>

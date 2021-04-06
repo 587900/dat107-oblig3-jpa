@@ -15,7 +15,7 @@ import javax.persistence.TypedQuery;
 public class AnsattDAO {
 	
 	private EntityManagerFactory emf 
-			= Persistence.createEntityManagerFactory("todoPersistenceUnit");
+			= Persistence.createEntityManagerFactory("firmaPU");
 	
 	/**
 	 * @param pk
