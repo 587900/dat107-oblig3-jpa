@@ -7,8 +7,7 @@
 	
 	<persistence-unit name="firmaPU" transaction-type="RESOURCE_LOCAL">
 		
-		<!--  Java-programmet som utfører spørringer listes her -->
-		<class>no.hvl.dat107.Main</class>
+		<class>no.hvl.dat107.Ansatt</class>
 		
 		<properties>
 		    <!--  Generelle JPA properties -->

@@ -5,7 +5,7 @@ CREATE SCHEMA firma;
 DROP TABLE IF EXISTS ansatt CASCADE;
 
 --Tabell: Ansatt
-CREATE TABLE ansatt
+CREATE TABLE {firma.ansatt}
 (
     ansattID SERIAL UNIQUE,
     brukernavn VARCHAR(4) NOT NULL UNIQUE,

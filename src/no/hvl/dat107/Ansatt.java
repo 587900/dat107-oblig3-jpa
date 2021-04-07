@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ansatt", schema = "firma")
-@NamedQuery(name = "hentAlleAnsatte", query ="SELECT p FROM ansatt p")
+//@NamedQuery(name = "finnAlleAnsatt", query ="SELECT a FROM ansatt a")
 
 public class Ansatt {
 	
@@ -81,7 +81,7 @@ public class Ansatt {
 	}
 
 	public void skrivUt() {
-		System.out.println("Ansatt-ID.: " + ansattID + "\nBrukernavn: " + brukernavn +
+		System.out.println("Ansatt-ID: " + ansattID + "\nBrukernavn: " + brukernavn +
 				"\nFornavn: " + fornavn + "\nEtternavn: " + etternavn +
 				"\nDato for ansettelse: " + ansDato + "\nStilling: " + stilling +
 				"\nMånedslønn: " + mndLonn);

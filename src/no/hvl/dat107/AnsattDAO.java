@@ -14,8 +14,7 @@ import javax.persistence.TypedQuery;
  */
 public class AnsattDAO {
 	
-	private EntityManagerFactory emf 
-			= Persistence.createEntityManagerFactory("firmaPU");
+	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("firmaPU");
 	
 	/**
 	 * @param pk
@@ -41,7 +40,7 @@ public class AnsattDAO {
 		EntityManager em = emf.createEntityManager();
 		
 		try {
-			TypedQuery<Ansatt> query = em.createQuery ("SELECT t FROM Ansatt t", Ansatt.class);
+			TypedQuery<Ansatt> query = em.createQuery ("SELECT a FROM ansatt a", Ansatt.class);
 			return query.getResultList(); //returnerer liste av ansatt-objekter
 		
 		} finally {
@@ -53,16 +52,15 @@ public class AnsattDAO {
 	 * @param tekst
 	 * @return
 	 */
-	public Ansatt finnAnsattMedTekst(String tekst) {
+	public Ansatt finnAnsattMedBrukernavn(String tekst) {
 		
 		EntityManager em = emf.createEntityManager();
 		
-		try { // *START* kode skrevet i forelesning
+		try {
 			TypedQuery<Ansatt> query = em.createQuery(
-					"SELECT t FROM Ansatt t WHERE t.tekst = :tekst", Ansatt.class); // :tekst er parameternavn
+					"SELECT a FROM ansatt a WHERE a.brukernavn = :tekst", Ansatt.class); // :tekst er parameternavn
 			query.setParameter("tekst", tekst);
-			return query.getSingleResult(); // NB! Unntak dersom 0 eller flere
-			// *SLUTT* kode skrevet i forelesning
+			return query.getSingleResult();
 		} finally {
 			em.close();
 		}
