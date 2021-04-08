@@ -47,7 +47,7 @@ public class Main {
 		
 		
 		// (5) Legg inn ny ansatt
-		Ansatt nyAnsatt = new Ansatt("BrNv", "ForN", "EtterN", (1989, 12, 12), "Stilling", 24000.00);
+//		Ansatt nyAnsatt = new Ansatt("BrNv", "ForN", "EtterN", (1989, 12, 12), "Stilling", 24000.00);
 		
 		
 	}
