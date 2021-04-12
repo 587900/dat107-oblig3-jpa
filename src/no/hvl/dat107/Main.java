@@ -42,7 +42,7 @@ public class Main {
 		
 		
 		// (3) Skriv ut alle ansatte
-		List<Ansatt> alleAnsatte = AnsattDAO.finnAlleAnsatt();
+		List<Ansatt> alleAnsatte = ansattDAO.finnAlleAnsatt();
 		
 		System.out.println("\nSkriver ut alle ansatte:");
 		alleAnsatte.forEach(t -> System.out.println("   " + t));
