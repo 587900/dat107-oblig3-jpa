@@ -50,17 +50,23 @@ public class Main {
 		// (4) Oppdater ansatt sin stilling og/eller lønn
 		System.out.println("\nAngi ansatt-ID for å endre stilling og/eller lønn:");
 
-		//TODO Input fra bruker + case 1 og 2
+			//TODO Input fra bruker + case 1 og 2
 		
 		Ansatt ansattf1 = ansattDAO.finnAnsattMedID(3); //Husk å endre til ID fra bruker
 		
-		//Endre stilling
+		ansattf1.skrivUt();
+		
+			//Endre stilling
 		ansattf1.setStilling("");
 		ansattDAO.oppdaterAnsatt(ansattf1);
 
-		Todo todof2 = todoDAO.finnTodoMedPk(3);
-		System.out.println("   Henter ut todo med pk=3");
-		System.out.println("   " + todof2);
+			//Endre lønn
+		ansattf1.setMndLonn(20000.00);
+		ansattDAO.oppdaterAnsatt(ansattf1);
+		
+		
+		System.out.println("Endret til:");
+		ansattf1.skrivUt();
 		
 		// (5) Legg inn ny ansatt
 //		Ansatt nyAnsatt = new Ansatt("BrNv", "ForN", "EtterN", (1989, 12, 12), "Stilling", 24000.00);
