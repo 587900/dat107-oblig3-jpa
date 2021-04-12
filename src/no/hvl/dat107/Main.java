@@ -2,6 +2,7 @@
 package no.hvl.dat107;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Scanner;
 
@@ -41,10 +42,25 @@ public class Main {
 		
 		
 		// (3) Skriv ut alle ansatte
+		List<Ansatt> alleAnsatte = AnsattDAO.finnAlleAnsatt();
 		
+		System.out.println("\nSkriver ut alle ansatte:");
+		alleAnsatte.forEach(t -> System.out.println("   " + t));
 		
 		// (4) Oppdater ansatt sin stilling og/eller lønn
+		System.out.println("\nAngi ansatt-ID for å endre stilling og/eller lønn:");
+
+		//TODO Input fra bruker + case 1 og 2
 		
+		Ansatt ansattf1 = ansattDAO.finnAnsattMedID(3); //Husk å endre til ID fra bruker
+		
+		//Endre stilling
+		ansattf1.setStilling("");
+		ansattDAO.oppdaterAnsatt(ansattf1);
+
+		Todo todof2 = todoDAO.finnTodoMedPk(3);
+		System.out.println("   Henter ut todo med pk=3");
+		System.out.println("   " + todof2);
 		
 		// (5) Legg inn ny ansatt
 //		Ansatt nyAnsatt = new Ansatt("BrNv", "ForN", "EtterN", (1989, 12, 12), "Stilling", 24000.00);
