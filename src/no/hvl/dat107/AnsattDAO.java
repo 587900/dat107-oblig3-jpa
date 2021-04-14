@@ -9,18 +9,10 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
-/**
- * @author lph-lokal
- *
- */
 public class AnsattDAO {
 	
 	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("firmaPU");
 	
-	/**
-	 * @param pk
-	 * @return
-	 */
 	public Ansatt finnAnsattMedID(int id) {
 		
 		EntityManager em = emf.createEntityManager();
@@ -28,14 +20,14 @@ public class AnsattDAO {
 		try {
 			return em.find(Ansatt.class, id);
 
-		} finally {
+		} catch (NoResultException e) {
+			return null;
+			
+		}finally {
 			em.close();
 		}
 	}
 
-	/**
-	 * @return
-	 */
 	public List<Ansatt> finnAlleAnsatt() {
 		
 		EntityManager em = emf.createEntityManager();
@@ -169,6 +161,18 @@ public class AnsattDAO {
 				tx.rollback();
 			}
 		} finally {
+			em.close();
+		}
+	}
+	
+	public Ansatt getAnsattReference (int id) {
+		EntityManager em = emf.createEntityManager();
+				
+		try {
+			
+			return em.getReference(Ansatt.class, id);			
+		} 
+		 finally {
 			em.close();
 		}
 	}
