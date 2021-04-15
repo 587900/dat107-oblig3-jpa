@@ -32,7 +32,7 @@ public class Main {
 					+ "\n(k) Registrer prosjektdeltakelse"
 					+ "\n(l) Føre timer for en ansatt på prosjekt"
 					+ "\n(m) Liste ut totalt antall timer på et prosjekt vha. ID"
-					+ "\n\nTast inn bokstav (a-l) for å velge, eller tast x for å avslutte:");
+					+ "\n\nTast inn bokstav (a-m) for å velge, eller tast x for å avslutte:");
 
 			input = tastatur.next();
 
@@ -322,8 +322,8 @@ public class Main {
 				break;
 				
 			case "m":
-				//fikk ikke tid til � skrive ut info om prosjekt, liste deltagere med roller og timer, men vi f�r skrive ut timar pr. prosjekt:
-				System.out.println("Liste ut antall timar p� eit prosjekt");
+				//fikk ikke tid til å skrive ut info om prosjekt, liste deltagere med roller og timer, men vi får skrive ut timar pr. prosjekt:
+				System.out.println("Liste ut antall timar på eit prosjekt");
 				System.out.println("Vennligst oppgi prosjekt-id og trykk ENTER:");
 				int sokID7 = tastatur.nextInt();
 				
