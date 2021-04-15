@@ -32,7 +32,8 @@ public class Main {
 					+ "\n(j) Legg inn nytt prosjekt"
 					+ "\n(k) Registrer prosjektdeltakelse"
 					+ "\n(l) Føre timer for en ansatt på prosjekt"
-					+ "\n\nTast inn bokstav (a-i) for å velge, eller tast x for å avslutte:");
+					+ "\n(m) Liste ut totalt antall timer på et prosjekt vha. ID"
+					+ "\n\nTast inn bokstav (a-l) for å velge, eller tast x for å avslutte:");
 
 			input = tastatur.next();
 
@@ -258,7 +259,7 @@ public class Main {
 					prosjektDAO.lagreNyttProsjekt(nyttProsjekt);
 				} catch (Throwable e) { };
 
-				System.out.println("\n\nAvdeling lagt inn:\n\n");
+				System.out.println("\n\nProsjekt lagt inn:\n\n");
 				nyttProsjekt.skrivUt();
 				break;
 			

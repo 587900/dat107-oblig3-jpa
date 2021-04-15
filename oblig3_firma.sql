@@ -24,7 +24,7 @@ CREATE TABLE firma.ansatt
 --Tabell: Avdeling
 CREATE TABLE firma.avdeling
 (
-    avdelingid INTEGER NOT NULL UNIQUE,
+    avdelingid SERIAL NOT NULL UNIQUE,
     avdeling VARCHAR(25),
     sjef INTEGER,
     PRIMARY KEY (avdelingid)
@@ -53,7 +53,7 @@ CREATE TABLE firma.prosjektdeltakelse
 INSERT INTO firma.avdeling (avdelingid, avdeling) VALUES
 (1, 'Avdeling for post'),
 (2, 'Avdeling for ører m.m.'),
-(3, 'Avdeling for gress');
+(2, 'Avdeling for gress');
 
 INSERT INTO firma.ansatt (brukernavn, fornavn, etternavn, ansDato, stilling, avdelingid, mndLonn) VALUES
 ('arnb', 'Arne', 'Fislefjeld', '1992-03-02', 'Ørepiller', 2, 45933.02),

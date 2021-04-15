@@ -30,9 +30,10 @@ public class Avdeling {
 	
 	public Avdeling() {}
 	
-	public Avdeling(int avdelingid, String avdeling) {
+	public Avdeling(int avdelingid, String avdeling, Ansatt sjef) {
 		this.avdelingid = avdelingid;
 		this.avdeling = avdeling;
+		this.sjef = sjef;
 	}
 	
 	public int getAvdelingID() {
