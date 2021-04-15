@@ -11,7 +11,6 @@
 		<class>no.hvl.dat107.Avdeling</class>
 		<class>no.hvl.dat107.Prosjekt</class>
 		<class>no.hvl.dat107.Prosjektdeltakelse</class>
-		<class>no.hvl.dat107.ProsjektdeltakelseID</class>
 		
 		<properties>
 		    <!--  Generelle JPA properties -->

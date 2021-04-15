@@ -5,18 +5,15 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Embeddable
 public class ProsjektdeltakelseID implements Serializable {
 	
 	@Id
-	@JoinColumn(name = "prosjektid")
 	private int prosjektid;
 	
 	@Id
-	@OneToMany
-	@JoinColumn(name = "ansattid")
 	private int ansattid;
 	
 	public ProsjektdeltakelseID() {}

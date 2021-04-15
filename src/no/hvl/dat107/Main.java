@@ -291,7 +291,7 @@ public class Main {
 				int timer = tastatur.nextInt();
 				nyProsjektdeltakelse.setTimer(timer);
 				
-				System.out.println("Legger inn prosjekt-ID [" + pSok + "] i databasen...");
+				System.out.println("Legger inn prosjektdeltakelse i databasen...");
 				try {
 					prosjektdeltakelseDAO.lagreNyProsjektdeltakelse(nyProsjektdeltakelse);
 				} catch (Throwable e) { };
