@@ -33,13 +33,6 @@ public class AnsattDAO {
 		EntityManager em = emf.createEntityManager();
 		
 		try {
-//			TypedQuery<Ansatt> query = em.createQuery(
-//					"SELECT a FROM ansatt a WHERE a.brukernavn = :tekst", Ansatt.class); // :tekst er parameternavn
-//			query.setParameter("tekst", "lars");
-//			em.getTransaction().begin();
-//			em.createNativeQuery("SET search_path TO firma").executeUpdate();
-//			em.getTransaction().commit();
-			
 			
 			TypedQuery<Ansatt> query = em.createQuery ("SELECT a FROM Ansatt a", Ansatt.class);
 			return query.getResultList(); //returnerer liste av ansatt-objekter

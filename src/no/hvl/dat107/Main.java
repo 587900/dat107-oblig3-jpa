@@ -12,28 +12,34 @@ public class Main {
 	public static void main(String[] args) {
 
 		Scanner tastatur = new Scanner(System.in).useLocale(new Locale("nb")); // Norsk locale
-		int input;
+		String input;
 		AnsattDAO ansattDAO = new AnsattDAO();
 		AvdelingDAO avdDAO = new AvdelingDAO();
+		ProsjektDAO prosjektDAO = new ProsjektDAO();
+		ProsjektdeltakelseDAO prosjektdeltakelseDAO = new ProsjektdeltakelseDAO();
 
 		do {
-			System.out.println("Meny:\n" + "\n(1) Søk etter ansatt på ansatt-ID"
-					+ "\n(2) Søk etter ansatt på brukernavn (4 bokstaver)"
-					+ "\n(3) Skriv ut alle ansatte"
-					+ "\n(4) Oppdater ansatt sin stilling og/eller lønn"
-					+ "\n(5) Legg inn ny ansatt"
-					+ "\n(6) Søk etter avdeling på avdeling-ID"
-					+ "\n(7) Skriv ut ansatt-liste og sjef på gitt avdeling"
-					+ "\n(8) Oppdater avdeling for ansatt"
-					+ "\n(9) Legg inn ny avdeling"
-					+ "\n\n(0) Avslutt" + "\n\nTast inn tall (0-9) for å velge:");
+			System.out.println("Meny:\n"
+					+ "\n(a) Søk etter ansatt på ansatt-ID"
+					+ "\n(b) Søk etter ansatt på brukernavn (4 bokstaver)"
+					+ "\n(c) Skriv ut alle ansatte"
+					+ "\n(d) Oppdater ansatt sin stilling og/eller lønn"
+					+ "\n(e) Legg inn ny ansatt"
+					+ "\n(f) Søk etter avdeling på avdeling-ID"
+					+ "\n(g) Skriv ut ansatt-liste og sjef på gitt avdeling"
+					+ "\n(h) Oppdater avdeling for ansatt"
+					+ "\n(i) Legg inn ny avdeling"
+					+ "\n(j) Legg inn nytt prosjekt"
+					+ "\n(k) Registrer prosjektdeltakelse"
+					+ "\n(l) Føre timer for en ansatt på prosjekt"
+					+ "\n\nTast inn bokstav (a-i) for å velge, eller tast x for å avslutte:");
 
-			input = tastatur.nextInt();
+			input = tastatur.next();
 
 			switch (input) {
 
-			// (1) Søk etter ansatt på ansatt-ID:
-			case 1:
+			// (a) Søk etter ansatt på ansatt-ID:
+			case "a":
 				System.out.println("Søk etter ansatt på ansatt-ID" + "\n\nVennligst oppgi ansatt-ID:");
 				int ansattID = tastatur.nextInt();
 				Ansatt ansattA = ansattDAO.finnAnsattMedID(ansattID);
@@ -42,8 +48,8 @@ public class Main {
 				ansattA.skrivUt();
 				break;
 
-			// (2) Søk etter ansatt på brukernavn:
-			case 2:
+			// (b) Søk etter ansatt på brukernavn:
+			case "b":
 				System.out.println("Søk etter ansatt på brukernavn" + "\n\nVennligst oppgi brukernavn:");
 				String ansBrukern = tastatur.next();
 				Ansatt ansattB = ansattDAO.finnAnsattMedBrukernavn(ansBrukern);
@@ -56,8 +62,8 @@ public class Main {
 				break;
 				
 
-			// (3) Skriv ut alle ansatte
-			case 3:
+			// (c) Skriv ut alle ansatte
+			case "c":
 				System.out.println("Skriv ut alle ansatte:" + "\n\n");
 				List<Ansatt> alleAnsatte = ansattDAO.finnAlleAnsatt();
 
@@ -65,8 +71,8 @@ public class Main {
 				alleAnsatte.forEach(t -> t.skrivUt());
 				break;
 
-			// (4) Oppdater ansatt sin stilling og/eller lønn
-			case 4:
+			// (d) Oppdater ansatt sin stilling og/eller lønn
+			case "d":
 				System.out.println("\nAngi ansatt-ID for å endre stilling og/eller lønn:");
 				int ansID = tastatur.nextInt();
 				Ansatt ansattSL = ansattDAO.finnAnsattMedID(ansID);
@@ -115,8 +121,8 @@ public class Main {
 					break;
 				}
 				break;
-			// (5) Legg inn ny ansatt
-			case 5:
+			// (e) Legg inn ny ansatt
+			case "e":
 				System.out.println("Legg inn ny ansatt");
 				Ansatt nyAnsatt = new Ansatt();
 
@@ -170,8 +176,8 @@ public class Main {
 				nyAnsatt.skrivUt();
 				break;
 				
-			// (6) Søke etter avdeling på avdeling-ID
-			case 6:
+			// (f) Søke etter avdeling på avdeling-ID
+			case "f":
 				System.out.println("Søk etter avdeling på avdeling-ID" + "\n\nVennligst oppgi avdeling-ID, og trykk ENTER:");
 				int sokID1 = tastatur.nextInt();
 				System.out.println("Søker etter avdeling-ID "+ sokID1 + "...\n");
@@ -180,16 +186,16 @@ public class Main {
 				avdA.skrivUt();
 				break;
 			
-			// (7) Skriv ut ansatt-liste og sjef på gitt avdeling
-			case 7:
+			// (g) Skriv ut ansatt-liste og sjef på gitt avdeling
+			case "g":
 				System.out.println("Skriv ut ansatt-liste og sjef på gitt avdeling" + "\n\nVennligst oppgi avdeling-ID, og trykk ENTER:");
 				int sokID2 = tastatur.nextInt();
 				Avdeling avdB = avdDAO.finnAvdelingMedID(sokID2);
 				avdB.skrivUtAnsSjef();
 				break;
 			
-			// (8) Oppdater avdeling for ansatt
-			case 8:
+			// (h) Oppdater avdeling for ansatt
+			case "h":
 				System.out.println("Oppdater avdeling for ansatt" + "\n\nVennligst oppgi ansatt-ID, og trykk ENTER:");
 				int sokID3 = tastatur.nextInt();
 				System.out.println("\nFinner ansatt med ansatt-ID: " + sokID3 + "...");
@@ -211,8 +217,8 @@ public class Main {
 				ansattD.skrivUt();
 				
 				break;
-			// (9) Legg inn ny avdeling
-			case 9:
+			// (i) Legg inn ny avdeling
+			case "i":
 				System.out.println("Legg inn ny avdeling\n\n");
 				Avdeling nyAvd = new Avdeling();
 
@@ -237,9 +243,94 @@ public class Main {
 				System.out.println("\n\nAvdeling lagt inn:\n\n");
 				nyAvd.skrivUt();
 				break;
+			
+			//(j) Legg inn nytt prosjekt
+			case "j":
+				System.out.println("Legg inn nytt prosjekt\n\n");
+				Prosjekt nyttProsjekt = new Prosjekt();
 
+				System.out.println("Vennligst oppgi navn på prosjekt:");
+				String pNavn = tastatur.next();
+				nyttProsjekt.setProsjektnavn(pNavn);
+				
+				System.out.println("Legger inn [" + pNavn + "] i databasen...");
+				try {
+					prosjektDAO.lagreNyttProsjekt(nyttProsjekt);
+				} catch (Throwable e) { };
+
+				System.out.println("\n\nAvdeling lagt inn:\n\n");
+				nyttProsjekt.skrivUt();
+				break;
+			
+			//(k) Registrer prosjektdeltakelse
+			case "k":
+				System.out.println("Registrer prosjektdeltakelse\n\n");
+				Prosjektdeltakelse nyProsjektdeltakelse = new Prosjektdeltakelse();
+
+				Prosjekt pSok;
+				do {
+					System.out.println("Angi prosjekt vha. prosjekt-ID (1-3), og trykk ENTER:");
+					int prosjektID = tastatur.nextInt();
+					pSok = prosjektDAO.getProsjektReference(prosjektID);
+				} while (pSok == null);
+				nyProsjektdeltakelse.setProsjektid(pSok);
+				
+				Ansatt aSok2;
+				do {
+					System.out.println("Angi ansatt vha. ansatt-ID (1-10), og trykk ENTER:");
+					int ansattID2 = tastatur.nextInt();
+					aSok2 = ansattDAO.getAnsattReference(ansattID2);
+				} while (aSok2 == null);
+				nyProsjektdeltakelse.setAnsattid(aSok2);
+				
+				System.out.println("Angi rolle for ansatt-ID: " + aSok2.getAnsattID() + ":");
+				String rolle = tastatur.next();
+				nyProsjektdeltakelse.setRolle(rolle);
+				
+				System.out.println("Oppgi antall timer jobbet for ansatt-ID: " + aSok2.getAnsattID() + ":");
+				int timer = tastatur.nextInt();
+				nyProsjektdeltakelse.setTimer(timer);
+				
+				System.out.println("Legger inn prosjekt-ID [" + pSok + "] i databasen...");
+				try {
+					prosjektdeltakelseDAO.lagreNyProsjektdeltakelse(nyProsjektdeltakelse);
+				} catch (Throwable e) { };
+
+				System.out.println("\n\nProsjektdeltakelse lagt inn:\n\n");
+				nyProsjektdeltakelse.skrivUt();
+				break;
+			
+			//(l) Føre timer for en ansatt på prosjekt
+			case "l":
+				System.out.println("Føre timer for en ansatt på prosjekt"
+				+ "\n\nVennligst oppgi prosjektdeltakelse-ID (to tall: ansatt-ID (1-10) + prosjekt-ID (1-3), og trykk ENTER:");
+				int sokID6 = tastatur.nextInt();
+				System.out.println("\nFinner prosjektdeltakelse med ID: " + sokID6 + "...");
+				Prosjektdeltakelse prosjektdeltakelse = prosjektdeltakelseDAO.finnProsjektdeltakelseMedID(sokID6);
+				prosjektdeltakelse.skrivUt();
+
+				System.out.println("\n\nVennligst oppgi antall timer å legge til, og trykk ENTER:");
+				double leggTil = tastatur.nextDouble();
+				System.out.println("\n\nLegger til " + leggTil + " timer...");
+				prosjektdeltakelse.setTimer(leggTil);
+				prosjektdeltakelseDAO.oppdaterTimer(sokID6, leggTil);;
+				
+				System.out.println("\n\nProsjektdeltakelse oppdatert:\n\n");
+				prosjektdeltakelse.skrivUt();
+				break;
+				
+			//(m) Utskrift av prosjektinfo
+				
+			case "x":
+				System.out.println("Takk for i dag!");
+				break;
+			
+			default:
+				System.out.println("Ugyldig bokstav: " + input);
+				break;
 			}
-		} while (input != 0);
+		}
+		while (!input.equals("x"));
 		tastatur.close();
 	}
 }

@@ -1,7 +1,6 @@
 package no.hvl.dat107;
 
 import java.time.LocalDate;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,9 +31,9 @@ public class Ansatt {
 	private Avdeling avdelingid;
 	private double mndLonn;
 	
-	public Ansatt () {}
+	public Ansatt() {}
 	
-	public Ansatt (String brukernavn, String fornavn, String etternavn,
+	public Ansatt(String brukernavn, String fornavn, String etternavn,
 			LocalDate ansDato, String stilling, Avdeling avdelingID, double mndLonn) {
 		this.brukernavn = brukernavn;
 		this.fornavn = fornavn;
@@ -46,6 +44,10 @@ public class Ansatt {
 		this.mndLonn = mndLonn;
 	}
 
+	public int getAnsattID() {
+		return ansattid;
+	}
+	
 	public String getBrukernavn() {
 		return brukernavn;
 	}

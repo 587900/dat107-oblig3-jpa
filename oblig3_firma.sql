@@ -31,7 +31,7 @@ CREATE TABLE firma.avdeling
 );
 
 --Tabell: Prosjekt
-CREATE TABLE prosjekt.avdeling
+CREATE TABLE firma.prosjekt
 (
     prosjektid SERIAL NOT NULL UNIQUE,
     prosjektnavn VARCHAR(25),
@@ -39,12 +39,15 @@ CREATE TABLE prosjekt.avdeling
 );
 
 --Tabell: Prosjektdeltakelse
-CREATE TABLE prosjektdeltakelse.avdeling
+CREATE TABLE firma.prosjektdeltakelse
 (
     prosjektid INTEGER,
     ansattid INTEGER,
     rolle VARCHAR(25),
-    timer DECIMAL(5, 2)
+    timer DECIMAL(5, 2),
+	FOREIGN KEY (prosjektid) REFERENCES firma.prosjekt (prosjektid) ON UPDATE CASCADE,
+	FOREIGN KEY (ansattid) REFERENCES firma.ansatt (ansattid) ON UPDATE CASCADE,
+	PRIMARY KEY (prosjektid,ansattid)
 );
 
 INSERT INTO firma.avdeling (avdelingid, avdeling) VALUES
@@ -70,25 +73,22 @@ INSERT INTO firma.prosjekt (prosjektnavn) VALUES
 ('Gressvekst');
 
 INSERT INTO firma.prosjektdeltakelse (prosjektid, ansattid, rolle, timer) VALUES
-(1, 3, 'Kasserer', 424,25),
-(1, 4, 'Prosjektleder', 524,25),
-(1, 7, 'Instruktør', 585,76),
-(2, 1, 'Prosjektleder', 670,52),
-(2, 5, 'Flaggbærer', 600,02),
-(2, 8, 'Kasserer', 643,12),
-(2, 10, 'Kaffebærer', 997,12),
-(3, 2, 'HR', 356,22),
-(3, 6, 'Prosjektleder', 856,22),
-(3, 9, 'Sekretær', 753,22);
+(1, 3, 'Kasserer', 424.25),
+(1, 4, 'Prosjektleder', 524.25),
+(1, 7, 'Instruktør', 585.76),
+(2, 1, 'Prosjektleder', 670.52),
+(2, 5, 'Flaggbærer', 600.02),
+(2, 8, 'Kasserer', 643.12),
+(2, 10, 'Kaffebærer', 997.12),
+(3, 2, 'HR', 356.22),
+(3, 6, 'Prosjektleder', 856.22),
+(3, 9, 'Sekretær', 753.22);
 
 ALTER TABLE firma.ansatt
 ADD FOREIGN KEY (avdelingid) REFERENCES firma.avdeling (avdelingid) ON UPDATE CASCADE;
 
 ALTER TABLE firma.avdeling
 ADD FOREIGN KEY (sjef) REFERENCES firma.ansatt (ansattid) ON UPDATE CASCADE;
-
-ALTER TABLE firma.prosjektdeltakelse
-ADD CONSTRAINT PK_prosjektdeltakelseid PRIMARY KEY (prosjektid,ansattid);
 
 UPDATE firma.avdeling
 SET sjef = 1
@@ -101,4 +101,3 @@ WHERE avdelingid = 2;
 UPDATE firma.avdeling
 SET sjef = 2
 WHERE avdelingid = 3;
-
