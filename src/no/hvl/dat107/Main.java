@@ -1,4 +1,3 @@
-
 package no.hvl.dat107;
 
 import java.time.LocalDate;
@@ -304,24 +303,32 @@ public class Main {
 			//(l) FÃ¸re timer for en ansatt pÃ¥ prosjekt
 			case "l":
 				System.out.println("FÃ¸re timer for en ansatt pÃ¥ prosjekt"
-				+ "\n\nVennligst oppgi prosjektdeltakelse-ID (to tall: ansatt-ID (1-10) + prosjekt-ID (1-3), og trykk ENTER:");
+				+ "\n\nVennligst oppgi prosjekt-ID og trykk ENTER:");
 				int sokID6 = tastatur.nextInt();
-				System.out.println("\nFinner prosjektdeltakelse med ID: " + sokID6 + "...");
-				Prosjektdeltakelse prosjektdeltakelse = prosjektdeltakelseDAO.finnProsjektdeltakelseMedID(sokID6);
+				System.out.println("Vennligst oppgi ansatt-id og trykk ENTER:");
+				int sokID62 = tastatur.nextInt();
+				System.out.println("\nFinner prosjektdeltakelse med ID: (" + sokID6 + "," + sokID62 + ")...");
+				Prosjektdeltakelse prosjektdeltakelse = prosjektdeltakelseDAO.finnProsjektdeltakelseMedID(sokID6, sokID62);
 				prosjektdeltakelse.skrivUt();
 
 				System.out.println("\n\nVennligst oppgi antall timer Ã¥ legge til, og trykk ENTER:");
 				double leggTil = tastatur.nextDouble();
 				System.out.println("\n\nLegger til " + leggTil + " timer...");
-				prosjektdeltakelse.setTimer(leggTil);
-				prosjektdeltakelseDAO.oppdaterTimer(sokID6, leggTil);;
+				prosjektdeltakelse.setTimer(prosjektdeltakelse.getTimer() + leggTil);
+				prosjektdeltakelseDAO.oppdaterTimer(sokID6, sokID62, leggTil);;
 				
 				System.out.println("\n\nProsjektdeltakelse oppdatert:\n\n");
 				prosjektdeltakelse.skrivUt();
 				break;
 				
-			//(m) Utskrift av prosjektinfo
+			case "m":
+				//fikk ikke tid til å skrive ut info om prosjekt, liste deltagere med roller og timer, men vi får skrive ut timar pr. prosjekt:
+				System.out.println("Liste ut antall timar på eit prosjekt");
+				System.out.println("Vennligst oppgi prosjekt-id og trykk ENTER:");
+				int sokID7 = tastatur.nextInt();
 				
+				System.out.println("Antall timer for prosjekt med id: " + sokID7 + " = " + prosjektdeltakelseDAO.antallTimer(sokID7));
+				break;				
 			case "x":
 				System.out.println("Takk for i dag!");
 				break;

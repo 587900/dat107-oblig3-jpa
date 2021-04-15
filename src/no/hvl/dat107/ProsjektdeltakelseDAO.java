@@ -12,12 +12,12 @@ public class ProsjektdeltakelseDAO {
 
 private EntityManagerFactory emf = Persistence.createEntityManagerFactory("firmaPU");
 	
-	public Prosjektdeltakelse finnProsjektdeltakelseMedID(int id) {
+	public Prosjektdeltakelse finnProsjektdeltakelseMedID(int prosjektid, int ansattid) {
 		
 		EntityManager em = emf.createEntityManager();
 
 		try {
-			return em.find(Prosjektdeltakelse.class, id);
+			return em.find(Prosjektdeltakelse.class, new ProsjektdeltakelseID(prosjektid, ansattid));
 
 		} catch (NoResultException e) {
 			return null;
@@ -41,7 +41,7 @@ private EntityManagerFactory emf = Persistence.createEntityManagerFactory("firma
 		}
 	}
 	
-	public void oppdaterTimer(int id, double timer) {
+	public void oppdaterTimer(int prosjektid, int ansattid, double timer) {
 		
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
@@ -49,7 +49,7 @@ private EntityManagerFactory emf = Persistence.createEntityManagerFactory("firma
 		try {
 			tx.begin();
 			
-			Prosjektdeltakelse prosjektdeltakelse = em.find(Prosjektdeltakelse.class, id);
+			Prosjektdeltakelse prosjektdeltakelse = em.find(Prosjektdeltakelse.class, new ProsjektdeltakelseID(prosjektid, ansattid));
 			prosjektdeltakelse.setTimer(prosjektdeltakelse.getTimer() + timer);
 						
 			tx.commit();
@@ -95,5 +95,30 @@ private EntityManagerFactory emf = Persistence.createEntityManagerFactory("firma
 		 finally {
 			em.close();
 		}
+	}
+	
+	public double antallTimer(int prosjektid) {
+		EntityManager em = emf.createEntityManager();
+				
+		try {
+			
+			//Fann ikke ut av dette, gjør noke nedgraderingar (manuell filtrering)
+			//TypedQuery<Prosjektdeltakelse> query = em.createQuery ("SELECT a,prosjektid FROM Prosjektdeltakelse a WHERE a.prosjektid = :prosjektid", Prosjektdeltakelse.class);
+			
+			TypedQuery<Prosjektdeltakelse> query = em.createQuery ("SELECT a FROM Prosjektdeltakelse a", Prosjektdeltakelse.class);
+			List<Prosjektdeltakelse> list = query.getResultList();
+			
+			double sum = 0;
+			for (int i = 0; i < list.size(); ++i) {
+				if (list.get(i).getProsjektid().getProsjektID() != prosjektid) continue;	//se kommentar "Fann ikke ut av dette". Filtrerer manuelt i staden for.
+				sum += list.get(i).getTimer();
+			}
+			
+			return sum;
+			
+		} finally {
+			em.close();
+		}
+		
 	}
 }
