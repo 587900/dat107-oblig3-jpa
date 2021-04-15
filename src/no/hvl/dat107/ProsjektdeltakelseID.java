@@ -3,17 +3,12 @@ package no.hvl.dat107;
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 @Embeddable
 public class ProsjektdeltakelseID implements Serializable {
 	
-	@Id
 	private int prosjektid;
 	
-	@Id
 	private int ansattid;
 	
 	public ProsjektdeltakelseID() {}

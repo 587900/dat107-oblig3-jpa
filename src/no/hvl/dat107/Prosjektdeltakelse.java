@@ -3,6 +3,7 @@ package no.hvl.dat107;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -12,9 +13,11 @@ import javax.persistence.Table;
 public class Prosjektdeltakelse {
 	
 	@Id
+	@JoinColumn(name = "prosjektid")
 	private Prosjekt prosjektid;
 	
 	@Id
+	@JoinColumn(name = "ansattid")
 	private Ansatt ansattid;
 	
 	private String rolle;
