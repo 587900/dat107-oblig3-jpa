@@ -323,7 +323,7 @@ public class Main {
 				
 			case "m":
 				//fikk ikke tid til å skrive ut info om prosjekt, liste deltagere med roller og timer, men vi får skrive ut timar pr. prosjekt:
-				System.out.println("Liste ut antall timar på eit prosjekt");
+				System.out.println("Liste ut totalt antall timer på et prosjekt vha. ID");
 				System.out.println("Vennligst oppgi prosjekt-id og trykk ENTER:");
 				int sokID7 = tastatur.nextInt();
 				
